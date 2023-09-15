@@ -11,6 +11,11 @@ class ApplicationController < Sinatra::Base
     categories.to_json(include: :tasks)
   end
 
+  get "/categories/:id" do
+    category = Category.find(params[:id])
+    category.to_json(include: :tasks)
+  end
+
   get "/tasks" do
     tasks = Task.all 
     tasks.to_json
