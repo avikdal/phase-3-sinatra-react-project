@@ -21,4 +21,17 @@ class ApplicationController < Sinatra::Base
     tasks.to_json
   end
 
+  post "/tasks" do
+    category = Category.find_or_create_by(name: params[:category])
+    newTask = Task.create(task: params[:description], category_id: category.id)
+    puts "here is the new task #{newTask}"
+    puts "heres the category id #{category.id}"
+    newTask.to_json
+  end
+
+  delete "/tasks/:id" do
+    task = Task.find(params[:id])
+    puts "here is the task to delete #{task}"
+  end
+
 end
