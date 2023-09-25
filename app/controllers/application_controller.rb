@@ -30,7 +30,7 @@ class ApplicationController < Sinatra::Base
   patch "/tasks/:id" do
     task = Task.find(params[:id])
     task.update(task: params[:task])
-    task.to_json
+    task.to_json(include: :category)
   end
 
   delete "/tasks/:id" do
