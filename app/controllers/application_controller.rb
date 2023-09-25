@@ -26,8 +26,8 @@ class ApplicationController < Sinatra::Base
     newTask.to_json(include: :category)
   end
 
-  post "/caegories" do
-    category = Category.create(name: params[:name])
+  post "/categories" do
+    category = Category.create(name: params[:category])
     puts "here's the new category #{category}"
     category.to_json
   end
