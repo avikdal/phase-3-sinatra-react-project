@@ -2,9 +2,6 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
-  get "/" do
-    { message: "Good luck with your project!" }.to_json
-  end
 
   get "/categories" do
     categories = Category.all 
@@ -21,17 +18,33 @@ class ApplicationController < Sinatra::Base
     tasks.to_json
   end
 
+  # does this count as; create action for both models ?
   post "/tasks" do
     category = Category.find_or_create_by(name: params[:category])
     newTask = Task.create(task: params[:description], category_id: category.id)
     puts "here is the new task #{newTask}"
     puts "heres the category id #{category.id}"
-    newTask.to_json
+    newTask.to_json(include: :category)
+  end
+
+  patch "/tasks/:id" do
+    task = Task.find(params[:id])
+    task.update(task: params[:task])
+    task.to_json
   end
 
   delete "/tasks/:id" do
     task = Task.find(params[:id])
     puts "here is the task to delete #{task}"
+    task.destroy
+    task.to_json
+  end
+
+  delete "/categories/:id" do
+    category = Category.find(params[:id])
+    puts "here is the category to delete #{category}"
+    category.destroy
+    category.to_json
   end
 
 end
