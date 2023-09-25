@@ -18,7 +18,6 @@ class ApplicationController < Sinatra::Base
     tasks.to_json
   end
 
-  # does this count as; create action for both models ?
   post "/tasks" do
     category = Category.find_or_create_by(name: params[:category])
     newTask = Task.create(task: params[:description], category_id: category.id)
@@ -27,10 +26,16 @@ class ApplicationController < Sinatra::Base
     newTask.to_json(include: :category)
   end
 
+  post "/caegories" do
+    category = Category.create(name: params[:name])
+    puts "here's the new category #{category}"
+    category.to_json
+  end
+
   patch "/tasks/:id" do
     task = Task.find(params[:id])
     task.update(task: params[:task])
-    task.to_json(include: :category)
+    task.to_json
   end
 
   delete "/tasks/:id" do
