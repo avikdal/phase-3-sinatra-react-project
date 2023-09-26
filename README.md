@@ -1,5 +1,7 @@
 # To-Do App Backend
 
+![task walkthrough gif](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmlnYjFiYm1tZWk2bDFkZGJib3NpMjNwczNzNjl6c2d5cmRvNHoxMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/46G23jBVb86gBdSDA5/giphy.gif)
+
 This To-Do App Backend is a web application that serves as the backend for a To-Do management system. It provides an API built with Sinatra and Active Record, designed to efficiently manage tasks and categories. This README will guide you through the setup, features, and usage of this application.
 
 ## Features
