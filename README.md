@@ -39,7 +39,7 @@ This project serves as the backend for the To-Do App, which is built using Sinat
 
 ### Frontend Setup
 
-1. Clone this repository: [for link]: https://github.com/avikdal/my-app-frontend
+1. Clone [frontend repository](https://github.com/avikdal/my-app-frontend)
 
 2. Navigate to the project directory in your terminal.
 
